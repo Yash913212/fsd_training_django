@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            background: #e9edf0;
+            font-family: Arial, sans-serif;
+        }
+
+        .col-1 { width: 8.33%; }
+        .col-2 { width: 16.66%; }
+        .col-3 { width: 25%; }
+        .col-4 { width: 33.33%; }
+        .col-5 { width: 41.66%; }
+        .col-6 { width: 50%; }
+        .col-7 { width: 58.33%; }
+        .col-8 { width: 66.66%; }
+        .col-9 { width: 75%; }
+        .col-10 { width: 83.33%; }
+        .col-11 { width: 91.66%; }
+        .col-12 { width: 100%; }
+
+        .grid-container {
+            display: flex;
+            width: min(1280px, 100%);
+            height: min(720px, calc(100vh - 80px));
+            /* padding: 4px;
+            gap: 4px; */
+            /* background: #162126; */
+        }
+
+        .left-panel,
+        .right-panel,
+        .left-stack {
+            display: flex;
+            min-width: 0;
+        }
+
+        .left-panel {
+            flex-direction: column;
+            /* gap: 4px; */
+        }
+
+        .right-panel {
+            flex-direction: column;
+            /* gap: 4px; */
+        }
+
+        .left-stack {
+            flex-direction: column;
+            /* gap: 4px; */
+        }
+
+        .top-half,
+        .bottom-half,
+        .middle-row,
+        .bottom-row,
+        .right-top,
+        .right-bottom {
+            display: flex;
+            flex: 1;
+            min-height: 0;
+            /* gap: 4px; */
+        }
+
+        .top-half > div,
+        .bottom-half > div,
+        .middle-row > div,
+        .bottom-row > div,
+        .right-top > div,
+        .right-bottom > div {
+            min-width: 0;
+            min-height: 0;
+        }
+
+        .bg-red { background-color: rgb(113, 179, 37); }
+        .bg-yellow { background-color: #5fc2bd; }
+        .bg-purple { background-color: #c87494; }
+        .bg-cyan { background-color: #cbea98; }
+        .bg-blue { background-color: #6f54d2; }
+        .bg-cream { background-color: #f0e2b9; }
+        .bg-pink { background-color: #e1c0c8; }
+        .bg-red2 { background-color: #ef3726; }
+        .bg-gray { background-color: #53605b; }
+    </style>
+</head>
+<body>
+    <section class="grid-container">
+        <div class="left-panel col-3">
+            <div class="top-half bg-red"></div>
+            <div class="bottom-half bg-yellow"></div>
+        </div>
+
+        <div class="right-panel col-9">
+            <div class="right-top">
+                <div class="col-6 bg-purple"></div>
+                <div class="col-6 bg-cyan"></div>
+            </div>
+
+            <div class="right-bottom">
+                <div class="left-stack col-9">
+                    <div class="middle-row">
+                        <div class="col-3 bg-blue"></div>
+                        <div class="col-9 bg-cream"></div>
+                    </div>
+
+                    <div class="bottom-row">
+                        <div class="col-9 bg-red2"></div>
+                        <div class="col-3 bg-gray"></div>
+                    </div>
+                </div>
+
+                <div class="col-3 bg-pink"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

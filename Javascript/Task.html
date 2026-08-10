@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Form</h1>
+    <form id="personalDetails">
+        <input type="text" name="firstname" id="firstname" placeholder="Firstname"><br>
+        <input type="text" name="lastname" id="lastname" placeholder="Lastname"><br>
+        <input type="email" name="email" id="email" placeholder="Email"><br>
+        <input type="password" name="password" id="password" placeholder="password"><br>
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="confirmPassword"><br>
+
+        <input type="submit">
+    </form>
+    <div id="output"></div>
+
+    <h1>Login</h1>
+    <form id="loginDetails">
+        <input type="email" name="loginEmail" id="loginEmail" placeholder="Email"><br>
+        <input type="password" name="loginPassword" id="loginPassword" placeholder="password"><br>
+
+        <input type="submit">
+
+        <script>
+            document.getElementById("personalDetails").addEventListener("submit", (e) => {
+
+                e.preventDefault()
+
+                let getData = JSON.parse(localStorage.getItem("userdata")) || [];
+                const firstname = document.getElementById("firstname").value
+                const lastname = document.getElementById("lastname").value
+                const email = document.getElementById("email").value
+                const password = document.getElementById("password").value
+                const confirmPassword = document.getElementById("confirmPassword").value
+
+                console.log(getData, "getdataaaaaaa")
+
+                if (password == confirmPassword) {
+                    const data = {
+                        firstname: firstname,
+                        lastname: lastname,
+                        email: email,
+                        password: password
+                    }
+                    const finaldata = [...getData, data]
+
+                    localStorage.setItem("userdata", JSON.stringify(finaldata));
+                    document.getElementById("output").innerHTML =
+                        `<p>firstname: ${firstname}<br>
+                    <p>lastname: ${lastname}<br>
+                    <p>email: ${email}<br>
+                        <p>password: ${password}<br>
+                `
+                } else {
+                    alert("password doesn't match")
+                }
+            })
+
+            document.getElementById("loginDetails").addEventListener("submit", (e) => {
+                e.preventDefault()
+
+                let getData = JSON.parse(localStorage.getItem("userdata")) || [];
+                const loginEmail = document.getElementById("loginEmail").value
+                const loginPassword = document.getElementById("loginPassword").value
+
+                const data = getData.find((item) => item.email === loginEmail && item.password === loginPassword)
+
+
+                if (data) {
+                    alert("Login successful")
+                } else {
+                    alert("Invalid credentials")
+                }
+            })
+        </script>
+
+</body>
+
+</html>

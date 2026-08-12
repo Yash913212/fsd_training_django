@@ -76,3 +76,6 @@ Backend to database it uses the ORM (Object Relational Mapper) to interact with 
 ## Quick Summary
 
 When a user opens a page, Django checks the URL, sends the request to a view, the view may read or update the model, and then Django returns an HTML page using a template.
+
+
+To render the HTML file, we need to create a template folder in the app directory and then create an HTML file inside it. Then we can use the loader to load the template and render it in the view function.

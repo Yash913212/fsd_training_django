@@ -67,6 +67,8 @@ django-admin startproject projectname
 python manage.py runserver
 ```
 
+To create model 
+python manage.py makemigrations applicationname
 
 ## Backend to Database
     

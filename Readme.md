@@ -46,7 +46,7 @@ python -m venv env
 2. Activate it on Windows
 
 ```bash
-env\Scripts\activate
+source env\Scripts\activate
 ```
 
 3. Install Django
